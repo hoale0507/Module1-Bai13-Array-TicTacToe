@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caro Game</title>
+</head>
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame" />
+<!--<input type="button" value="Change Value" onclick="changeValue()">-->
+
+<script>
+    let b = document.getElementById("carogame");
+    let board = [];
+    let data = "";
+    for (let i = 0; i < 5; i++) {
+        board[i] = ['.', '.','.' , '.', '.'];
+    }
+
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
+        data += "<br/>";
+    }
+    let turn1 = "<br/><br/><input type='button' value='PLayer 1' onclick='changeValue1()'>"
+    let turn2 = "<br/><br/><input type='button' value='Player 2' onclick='changeValue2()'>"
+    data += turn1 + turn2;
+    b.innerHTML = data;
+
+    function changeValue1() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        if (board[positionX][positionY] === 'O') {
+            alert("Please tick again!");
+        } else {
+            data = "";
+            board[positionX][positionY] = "x";
+            for (let i = 0; i < 5; i++) {
+                data += "<br/>";
+                for (let j = 0; j < 5; j++) {
+                    data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                }
+            }
+            let turn1 = "<br/><br/><input type='button' value='PLayer 1' onclick='changeValue1()'>"
+            let turn2 = "<br/><br/><input type='button' value='Player 2' onclick='changeValue2()'>"
+            data += turn1 + turn2;
+            b.innerHTML = data;
+        }
+    }
+
+    function changeValue2() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        if (board[positionX][positionY] === 'x') {
+            alert("Please tick again!");
+        } else {
+        data = "";
+        board[positionX][positionY] = "O";
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        let turn1 = "<br/><br/><input type='button' value='PLayer 1' onclick='changeValue1()'>"
+        let turn2 = "<br/><br/><input type='button' value='Player 2' onclick='changeValue2()'>"
+        data += turn1 + turn2;
+        b.innerHTML = data;
+        }
+    }
+
+    for(let row=0; row < board.length; row++){
+        for(let col=0; col < board[row.length]; col++){
+            if( board[row][col]==='x' && board[row+1][col]=== 'x' && board[row+2][col] === 'x') {
+                alert('Player 1 win!');
+                location.reload();
+            }
+            if(board[row][col]==='x' && board[row][col+1]==='x'&& board[row][col=2] ==='x') {
+                alert('Player 1 win!');
+                location.reload();
+            }
+            if(board[row][col]==='x' && board[row+1][col+1]=== 'x' && board[row+2][col+2]==='x') {
+                isWinner = true;
+                location.reload();
+            }
+            if(board[board.length][col]==='x'&& board[board.length-1][col+1]==='x' && board[board.length-2][col+2]==='x') {
+                isWinner = true;
+                location.reload();
+            }
+        }
+    }
+
+    for(let row=0; row < board.length; row++){
+        for(let col=0; col < board[row.length]; col++){
+            if( board[row][col]==='O' && board[row+1][col]=== 'O' && board[row+2][col] === 'O') {
+                alert('Player 2 win!');
+                location.reload();
+            }
+            if(board[row][col]==='O' && board[row][col+1]==='O'&& board[row][col=2] ==='O') {
+                alert('Player 2 win!');
+                location.reload();
+            }
+            if(board[row][col]==='O' && board[row+1][col+1]=== 'O' && board[row+2][col+2]==='O') {
+                alert('Player 2 win!');
+                location.reload();
+            }
+            if(board[board.length][col]==='O'&& board[board.length-1][col+1]==='O' && board[board.length-2][col+2]==='O') {
+                alert('Player 2 win!');
+                location.reload();
+            }
+        }
+    }
+
+    // for(let row = 0; row < board.length; row++) {
+    //     for(let col = 0; col < board[row].length; col++) {
+    //         if (board[row][col]===board[row+1][col] && board[row+1][col]===board[row+2][col] || )
+    //     }
+    // }
+    
+</script>
+</body>
+</html>
